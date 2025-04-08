@@ -17,8 +17,7 @@ class TestMainPage:
         locators = HeaderAndFooterLocators.get_locators()
 
         for checked_locator in locators:
-            open_page.check_link(locator=checked_locator)
-
+            open_page.check_link(driver=driver, locator=checked_locator)
 
         locators = PartnersLocators.get_locators()
 

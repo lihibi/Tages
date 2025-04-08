@@ -2,7 +2,7 @@
 import allure
 from faker import Faker
 from loguru import logger
-from selenium.webdriver import Keys
+from selenium.webdriver import Keys, ActionChains
 from selenium.webdriver.chrome.webdriver import WebDriver
 
 from locators.main_page_locators import FormErrorLocators, FormLocators, SomeLocators
@@ -14,14 +14,17 @@ class MainPage(BasePage):
     """Класс для работы с главной страницей сайта https://tages.ru/"""
 
     @allure.step("Проверка текущего URL")
-    def check_link(self, locator: Locator) -> None:
+    def check_link(self, driver: WebDriver, locator: Locator) -> None:
         """Проверить текущий URL
 
         Args:
+            driver: инстанс WebDriver
             locator: инстанс Locator
         """
 
-        self._driver.execute_script("arguments[0].scrollIntoView()", self.find_element(locator=locator))
+        actions = ActionChains(driver)
+        actions.move_to_element(self.find_element(locator=locator)).perform()
+
         self.click_by_locator(locator=locator)
 
         assert self.current_url == locator.link, f"{self.current_url} не соответствует ожидаемому {locator.link}"
@@ -34,9 +37,9 @@ class MainPage(BasePage):
             driver: инстанс WebDriver
             locator: инстанс Locator
         """
-        self._driver.execute_script(
-            "arguments[0].scrollIntoView()", self.find_element(locator=SomeLocators.OUR_PARTNERS)
-        )
+        actions = ActionChains(driver)
+        actions.move_to_element(self.find_element(locator=locator)).perform()
+
         self.click_by_locator(locator=locator)
 
         driver.switch_to.window(driver.window_handles[1])
