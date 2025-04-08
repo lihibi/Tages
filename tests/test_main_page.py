@@ -6,7 +6,7 @@ from locators.main_page_locators import HeaderAndFooterLocators, PartnersLocator
 from pages.main_page import MainPage
 
 
-@allure.story("jj")
+@allure.story("Проверка главной страницы")
 class TestMainPage:
     """Класс тестирования кликабельности элементов на главной странице сайта https://tages.ru/"""
 

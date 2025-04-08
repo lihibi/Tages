@@ -1,5 +1,5 @@
 """Модуль с методами для работы с главной страницей сайта https://tages.ru/"""
-
+import allure
 from faker import Faker
 from loguru import logger
 from selenium.webdriver import Keys
@@ -13,6 +13,7 @@ from utils.locator import Locator
 class MainPage(BasePage):
     """Класс для работы с главной страницей сайта https://tages.ru/"""
 
+    @allure.step("Проверка текущего URL")
     def check_link(self, locator: Locator) -> None:
         """Проверить текущий URL
 
@@ -25,6 +26,7 @@ class MainPage(BasePage):
 
         assert self.current_url == locator.link, f"{self.current_url} не соответствует ожидаемому {locator.link}"
 
+    @allure.step("Проверка текущего URL в новой вкладке")
     def check_link_in_new_tab(self, driver: WebDriver, locator: Locator) -> None:
         """Проверить текущий URL в новой вкладке и закрыть ее
 
@@ -44,6 +46,7 @@ class MainPage(BasePage):
         logger.info("Закрываем вкладку")
         self.close_tab()
 
+    @allure.step("Проверка формы обратной связи")
     def check_form(self) -> None:
         """Функция валидации формы обратной связи"""
 
