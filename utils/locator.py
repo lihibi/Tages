@@ -3,7 +3,7 @@
 class Locator:
     """Класс локатора"""
 
-    def __init__(self, link: str = None, name: str = None, locator: tuple[str, str] = None):
+    def __init__(self, locator: tuple[str, str], link: str = None, name: str = None):
         """
         Args:
             link: страница, на которую ведет элемент
