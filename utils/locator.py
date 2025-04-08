@@ -7,6 +7,7 @@ class Locator:
         """
         Args:
             link: страница, на которую ведет элемент
+            name: имя локатора
             locator: значение локатора
         """
         self.link = link
