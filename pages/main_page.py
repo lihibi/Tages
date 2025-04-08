@@ -2,7 +2,7 @@
 import allure
 from faker import Faker
 from loguru import logger
-from selenium.webdriver import Keys, ActionChains
+from selenium.webdriver import ActionChains, Keys
 from selenium.webdriver.chrome.webdriver import WebDriver
 
 from locators.main_page_locators import FormErrorLocators, FormLocators, SomeLocators
